@@ -5,6 +5,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>helloWorld</module>
+		<module>api-gateway</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -31,6 +32,10 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
