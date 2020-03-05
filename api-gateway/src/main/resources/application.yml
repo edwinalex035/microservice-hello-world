@@ -1,0 +1,17 @@
+server:
+  port: 8000
+
+zuul:
+  prefix: /api
+  routes:
+    hello-world:
+      path: /hello-world/**
+      url: http://localhost:8080/hello-world
+
+  endpoints:
+    trace:
+      sensitive: false
+
+  ribbon:
+    eureka:
+      enabled: false
