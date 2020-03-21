@@ -1,11 +1,15 @@
+spring:
+  application:
+    name: api-gateway
+
 server:
   port: 8000
 
 # Service Discovery configuration
 eureka:
   client:
-    service-url:
-      default-zone: http://localhost:8761/eureka/
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http:localhost:8761/eureka}
 
 zuul:
   prefix: /api
@@ -14,7 +18,7 @@ zuul:
     hello-world:
       path: /hello-world/**
       serviceId: hello-world
-      strip-prefix: false
+      stripPrefix: false
 
   endpoints:
     trace:

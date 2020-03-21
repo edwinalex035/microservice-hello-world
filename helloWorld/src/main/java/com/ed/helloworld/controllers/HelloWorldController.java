@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello-world")
 public class HelloWorldController {
 
-  @Value("${server.port}")
-  private String serverPort;
-
   @GetMapping
+  public String helloWorldIndex() {
+    log.info("Calling hello-world controller");
+    return "Hello World Index";
+  }
+
+  @GetMapping("/static")
   public String helloWorld() {
-    log.info("Generating a random multiplication from server @ {}", serverPort);
-    return "Hello World";
+    log.info("Calling hello-world controller");
+    return "Hello World Static";
   }
 }

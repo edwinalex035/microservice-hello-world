@@ -1,0 +1,25 @@
+version: "3"
+services:
+  service-registry:
+    image: edwinalex035/service-registry:0.0.5
+    ports:
+    - 8761:8761
+  api-gateway:
+    image: edwinalex035/api-gateway:0.0.5
+    environment:
+      - JAVA_OPTS=
+          -DEUREKA_SERVER=$SERVICE_REGISTRY_SERVER
+    ports:
+    - 8000:8000
+    depends_on:
+      - service-registry
+  hello-world:
+    image: edwinalex035/hello-world:0.0.5
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
+    ports:
+      - 8080:8080
+    depends_on:
+      - service-registry
+      - api-gateway
