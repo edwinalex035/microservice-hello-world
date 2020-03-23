@@ -8,7 +8,7 @@ services:
     image: edwinalex035/api-gateway:0.0.5
     environment:
       - JAVA_OPTS=
-          -DEUREKA_SERVER=$SERVICE_REGISTRY_SERVER
+        -DEUREKA_SERVER=http://service-registry:8761/eureka
     ports:
     - 8000:8000
     depends_on:
